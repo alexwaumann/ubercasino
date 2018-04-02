@@ -8,10 +8,14 @@
 #define __CARD_T_H__
 
 #include <string>
+#include <iostream>
 
 enum class suit_t { hearts, diamonds, clubs, spades };
 enum class face_t { ace, two, three, four, five, six, seven, eight,
     nine, ten, jack, queen, king };
+
+std::ostream& operator<<( std::ostream&, const suit_t& s );
+std::ostream& operator<<( std::ostream&, const face_t f );
 
 class card_t
 {

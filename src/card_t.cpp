@@ -138,3 +138,53 @@ std::string card_t::face_to_string( face_t face )
         return "unknown";
 }
 
+std::ostream& operator<<( std::ostream& os, const suit_t& s )
+{
+    if( s == suit_t::hearts )
+        os << "hearts";
+    else if( s == suit_t::diamonds )
+        os << "diamonds";
+    else if( s == suit_t::clubs )
+        os << "clubs";
+    else if( s == suit_t::spades )
+        os << "spades";
+    else
+        os << "unknown";
+
+    return os;
+}
+
+std::ostream& operator<<( std::ostream& os, const face_t f )
+{
+    if( f == face_t::ace )
+        os << "ace";
+    else if( f == face_t::two )
+        os << "two";
+    else if( f == face_t::three )
+        os << "three";
+    else if( f == face_t::four )
+        os << "four";
+    else if( f == face_t::five )
+        os << "five";
+    else if( f == face_t::six )
+        os << "six";
+    else if( f == face_t::seven )
+        os << "seven";
+    else if( f == face_t::eight )
+        os << "eight";
+    else if( f == face_t::nine )
+        os << "nine";
+    else if( f == face_t::ten )
+        os << "ten";
+    else if( f == face_t::jack )
+        os << "jack";
+    else if( f == face_t::queen )
+        os << "queen";
+    else if( f == face_t::king )
+        os << "king";
+    else
+        os << "unknown";
+
+    return os;
+}
+

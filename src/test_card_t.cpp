@@ -52,12 +52,12 @@ void test_constructor( card_t card, suit_t suit, face_t face, int value, bool fa
 {
     if( card.get_suit() != suit )
         cout << "Error: unexpected suit" << endl
-             << "\tExpected: " << card_t::suit_to_string( suit ) << endl
-             << "\tActual  : " << card_t::suit_to_string( card.get_suit() ) << endl;
+             << "\tExpected: " << suit << endl
+             << "\tActual  : " << card.get_suit() << endl;
     if( card.get_face() != face )
         cout << "Error: unexpected face" << endl
-             << "\tExpected: " << card_t::face_to_string( face ) << endl
-             << "\tActual  : " << card_t::face_to_string( card.get_face() ) << endl;
+             << "\tExpected: " << face << endl
+             << "\tActual  : " << card.get_face() << endl;
     if( card.get_value() != value )
         cout << "Error: unexpected value" << endl
              << "\tExpected: " << value << endl

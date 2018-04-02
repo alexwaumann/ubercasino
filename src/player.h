@@ -8,11 +8,14 @@
 #define __PLAYER_H__
 
 #include <string>
+#include <iostream>
 #include "hand_t.h"
 
 #define MAX_HANDS_PER_PLAYER    3
 
 enum class player_action_t { idle, hit, stand, split, double_down };
+
+std::ostream& operator<<( std::ostream& os, const player_action_t& a );
 
 class Player
 {

@@ -61,3 +61,27 @@ bool Player::add_hand( hand_t hand )
     return true;
 }
 
+/*
+ * Function: operator<<
+ *
+ * Operator overloading to make player_action_t work with the <<
+ * operator.
+ */
+std::ostream& operator<<( std::ostream& os, const player_action_t& a )
+{
+    if( a == player_action_t::idle )
+        os << "idle";
+    else if( a == player_action_t::hit )
+        os << "hit";
+    else if( a == player_action_t::stand )
+        os << "stand";
+    else if( a == player_action_t::split )
+        os << "split";
+    else if( a == player_action_t::double_down )
+        os << "double down";
+    else
+        os << "unknown";
+
+    return os;
+}
+

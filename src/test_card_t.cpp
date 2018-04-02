@@ -1,11 +1,11 @@
 /*
- * File: card_t_test.cpp
+ * File: test_card_t.cpp
  * Created: 04/01/2018
  * Modified: 04/01/2018
  */
 
 #include <iostream>
-#include "card_t.cpp"
+#include "card_t.h"
 
 using namespace std;
 

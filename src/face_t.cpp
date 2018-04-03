@@ -141,3 +141,11 @@ int operator+( int& a, const face_t& b )
     return sum;
 }
 
+int operator+( const face_t& a, const face_t& b )
+{
+    int sum = 0;
+    sum = sum + a;
+    sum = sum + b;
+    return sum;
+}
+

@@ -30,6 +30,7 @@ std::ostream& operator<<( std::ostream& os, const face_t& f );
 std::string operator+( const face_t& f, std::string& str );
 std::string operator+( std::string& in, const face_t& f );
 
+int operator+( const face_t& a, const face_t& b );
 int operator+( int& a, const face_t& b );
 
 #endif

@@ -16,6 +16,7 @@ bool ostream_face( stringstream, face_t, string );
 bool face_plus_string( face_t, string, string );
 bool string_plus_face( string, face_t, string );
 bool int_plus_face( int, face_t, int );
+bool face_plus_face( face_t, face_t, int );
 
 int tests = 0; int pass = 0; int fail = 0;
 
@@ -41,6 +42,12 @@ int main( int argc, char ** argv )
 
     tests +=1;
     if( int_plus_face( 3, face_t::king, 13 ) )
+        pass += 1;
+    else
+        fail += 1;
+
+    tests +=1;
+    if( face_plus_face( face_t::five, face_t::king, 15 ) )
         pass += 1;
     else
         fail += 1;
@@ -100,6 +107,20 @@ bool int_plus_face( int a, face_t b, int exp )
     if( (a + b) != exp )
     {
         cout << "Error: int + face_t" << endl
+             << "\tExpected: " << exp << endl
+             << "\tActual  : " << (a + b) << endl;
+        
+        return false;
+    }
+
+    return true;
+}
+
+bool face_plus_face( face_t a, face_t b, int exp )
+{
+    if( (a + b) != exp )
+    {
+        cout << "Error: face_t + face_t" << endl
              << "\tExpected: " << exp << endl
              << "\tActual  : " << (a + b) << endl;
         

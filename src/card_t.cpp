@@ -1,190 +1,65 @@
 /*
  * File: card_t.cpp
  * Created: 04/01/2018
- * Modified: 04/01/2018
+ * Modified: 04/03/2018
  */
 
 #include "card_t.h"
 
 card_t::card_t()
 {
-    this->suit = suit_t::hearts;
     this->face = face_t::ace;
-    this->set_value();
+    this->suit = suit_t::hearts;
     this->face_up = false;
 }
 
-card_t::card_t( suit_t suit, face_t face )
+card_t::card_t( face_t face, suit_t suit )
 {
-    this->suit = suit;
     this->face = face;
-    this->set_value();
+    this->suit = suit;
     this->face_up = false;
 }
 
-card_t::card_t( suit_t suit, face_t face, bool face_up )
+card_t::card_t( face_t face, suit_t suit, bool face_up )
 {
-    this->suit = suit;
     this->face = face;
-    this->set_value();
+    this->suit = suit;
     this->face_up = face_up;
 }
 
-suit_t card_t::get_suit() { return this->suit; }
+/*
+ * Function: get_face
+ *
+ * returns: face of the card
+ */
+face_t card_t::get_face() const { return this->face; }
 
-face_t card_t::get_face() { return this->face; }
+/*
+ * Function: get_suit
+ *
+ * returns: suit of the card
+ */
+suit_t card_t::get_suit() const { return this->suit; }
 
-int card_t::get_value() { return this->value; }
+/*
+ * Function: is_face_up
+ *
+ * returns: true if card is facing up
+ *          false otherwise
+ */
+bool card_t::is_face_up() const { return this->face_up; }
 
-bool card_t::is_face_up() { return this->face_up; }
-
+/*
+ * Function: set_face_up
+ *
+ * Sets the card to be facing up
+ */
 void card_t::set_face_up() { this->face_up = true; }
 
+/*
+ * Function: set_face_down
+ *
+ * Sets the card to be facing down
+ */
 void card_t::set_face_down() { this->face_up = false; }
-
-void card_t::set_value()
-{
-    // pointless but want to keep style consistent
-    face_t face = this->face;
-
-    if( face == face_t::ace )
-        this->value = 1;
-    else if( face == face_t::two )
-        this->value = 2;
-    else if( face == face_t::three )
-        this->value = 3;
-    else if( face == face_t::four )
-        this->value = 4;
-    else if( face == face_t::five )
-        this->value = 5;
-    else if( face == face_t::six )
-        this->value = 6;
-    else if( face == face_t::seven )
-        this->value = 7;
-    else if( face == face_t::eight )
-        this->value = 8;
-    else if( face == face_t::nine )
-        this->value = 9;
-    else if( face == face_t::ten ||
-             face == face_t::jack ||
-             face == face_t::queen ||
-             face == face_t::king )
-        this->value = 10;
-    else
-        this->value = 0;
-}
-
-/*
- * Function: suit_to_string
- *
- * Converts a suit of of type suit_t to a string.
- *
- * @param suit: suit of a card
- *
- * returns: suit in string format
- */
-std::string card_t::suit_to_string( suit_t suit )
-{
-    if( suit == suit_t::hearts )
-        return "hearts";
-    else if( suit == suit_t::diamonds )
-        return "diamonds";
-    else if( suit == suit_t::clubs )
-        return "clubs";
-    else if( suit == suit_t::spades )
-        return "spades";
-    else
-        return "unkown";
-}
-
-/*
- * Function: face_to_string
- *
- * Converts a face of of type face_t to a string.
- *
- * @param face: face of a card
- *
- * returns: face in string format
- */
-std::string card_t::face_to_string( face_t face )
-{
-    if( face == face_t::ace )
-        return "ace";
-    else if( face == face_t::two )
-        return "two";
-    else if( face == face_t::three )
-        return "three";
-    else if( face == face_t::four )
-        return "four";
-    else if( face == face_t::five )
-        return "five";
-    else if( face == face_t::six )
-        return "six";
-    else if( face == face_t::seven )
-        return "seven";
-    else if( face == face_t::eight )
-        return "eight";
-    else if( face == face_t::nine )
-        return "nine";
-    else if( face == face_t::ten )
-        return "ten";
-    else if( face == face_t::jack )
-        return "jack";
-    else if( face == face_t::queen )
-        return "queen";
-    else if( face == face_t::king )
-        return "king";
-    else
-        return "unknown";
-}
-
-std::ostream& operator<<( std::ostream& os, const suit_t& s )
-{
-    if( s == suit_t::hearts )
-        os << "hearts";
-    else if( s == suit_t::diamonds )
-        os << "diamonds";
-    else if( s == suit_t::clubs )
-        os << "clubs";
-    else if( s == suit_t::spades )
-        os << "spades";
-    else
-        os << "unknown";
-
-    return os;
-}
-
-std::ostream& operator<<( std::ostream& os, const face_t f )
-{
-    if( f == face_t::ace )
-        os << "ace";
-    else if( f == face_t::two )
-        os << "two";
-    else if( f == face_t::three )
-        os << "three";
-    else if( f == face_t::four )
-        os << "four";
-    else if( f == face_t::five )
-        os << "five";
-    else if( f == face_t::six )
-        os << "six";
-    else if( f == face_t::seven )
-        os << "seven";
-    else if( f == face_t::eight )
-        os << "eight";
-    else if( f == face_t::nine )
-        os << "nine";
-    else if( f == face_t::ten )
-        os << "ten";
-    else if( f == face_t::jack )
-        os << "jack";
-    else if( f == face_t::queen )
-        os << "queen";
-    else if( f == face_t::king )
-        os << "king";
-    else
-        os << "unknown";
-
-    return os;
-}
 

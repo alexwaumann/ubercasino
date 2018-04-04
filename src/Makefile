@@ -26,6 +26,9 @@ test_hand_t.o: test_hand_t.cpp hand_t.h card_t.h
 hand_t.o: hand_t.cpp hand_t.h card_t.h
 	g++ $(CXXFLAGS) -Wall -c hand_t.cpp
 
+shoe.o: shoe.cpp shoe.h shoe_t.h card.h suit_t.h face_t.h
+	g++ $(CXXFLAGS) -c shoe.cpp
+
 test_card: test_card.o card.o suit_t.o face_t.o
 	g++ $(CXXFLAGS) -o test_card test_card.o card.o suit_t.o face_t.o
 	./test_card

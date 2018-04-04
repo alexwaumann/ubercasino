@@ -9,7 +9,7 @@
 
 CXXFLAGS += --std=c++11
 
-test: test_card test_hand test_player
+test: test_face test_suit test_card
 
 test_player: test_player.o player.o hand_t.o card_t.o
 	g++ $(CXXFLAGS) -o test_player test_player.o player.o hand_t.o card_t.o
@@ -25,13 +25,30 @@ test_hand_t.o: test_hand_t.cpp hand_t.h card_t.h
 	g++ $(CXXFLAGS) -Wall -c test_hand_t.cpp
 hand_t.o: hand_t.cpp hand_t.h card_t.h
 	g++ $(CXXFLAGS) -Wall -c hand_t.cpp
-test_card: test_card_t.o card_t.o
-	g++ $(CXXFLAGS) -o test_card test_card_t.o card_t.o
+
+test_card: test_card_t.o card_t.o suit_t.o face_t.o
+	g++ $(CXXFLAGS) -o test_card test_card_t.o card_t.o suit_t.o face_t.o
 	./test_card
-test_card_t.o: test_card_t.cpp card_t.h
+test_card_t.o: test_card_t.cpp card_t.h suit_t.h face_t.h
 	g++ $(CXXFLAGS) -Wall -c test_card_t.cpp
-card_t.o: card_t.cpp card_t.h
+card_t.o: card_t.cpp card_t.h suit_t.h face_t.h
 	g++ $(CXXFLAGS) -Wall -c card_t.cpp
 
+test_suit: test_suit_t.o suit_t.o
+	g++ $(CXXFLAGS) -o test_suit test_suit_t.o suit_t.o
+	./test_suit
+test_suit_t.o: test_suit_t.cpp suit_t.h
+	g++ $(CXXFLAGS) -c test_suit_t.cpp
+suit_t.o: suit_t.cpp suit_t.h
+	g++ $(CXXFLAGS) -c suit_t.cpp
+
+test_face: test_face_t.o face_t.o
+	g++ $(CXXFLAGS) -o test_face test_face_t.o face_t.o
+	./test_face
+test_face_t.o: test_face_t.cpp face_t.h
+	g++ $(CXXFLAGS) -c test_face_t.cpp
+face_t.o: face_t.cpp face_t.h
+	g++ $(CXXFLAGS) -c face_t.cpp
+
 clean:
-	rm -rf *.o test_card test_hand test_player
+	rm -rf *.o test_face test_suit test_card test_hand test_player

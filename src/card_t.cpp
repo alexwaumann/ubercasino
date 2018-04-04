@@ -13,6 +13,13 @@ card_t::card_t()
     this->face_up = false;
 }
 
+card_t::card_t( const card_t& card )
+{
+    this->face = card.face;
+    this->suit = card.suit;
+    this->face_up = card.face_up;
+}
+
 card_t::card_t( face_t face, suit_t suit )
 {
     this->face = face;

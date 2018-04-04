@@ -14,6 +14,7 @@ class card_t
 {
     public:
         card_t();
+        card_t( const card_t& card );
         card_t( face_t face, suit_t suit );
         card_t( face_t face, suit_t suit, bool face_up );
 

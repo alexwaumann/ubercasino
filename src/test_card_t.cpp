@@ -16,11 +16,13 @@ int main( int argc, char ** argv )
     card_t ace_of_hearts;
     card_t six_of_spades{ face_t::six, suit_t::spades };
     card_t queen_of_diamonds{ face_t::queen, suit_t::diamonds, true };
+    card_t card_copy{ queen_of_diamonds };
 
     // test constructors
     test_constructor( ace_of_hearts, face_t::ace, suit_t::hearts, false );
     test_constructor( six_of_spades, face_t::six, suit_t::spades, false );
     test_constructor( queen_of_diamonds, face_t::queen, suit_t::diamonds, true );
+    test_constructor( card_copy, face_t::queen, suit_t::diamonds, true );
 
     // test setters
     ace_of_hearts.set_face_up();

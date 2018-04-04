@@ -52,10 +52,10 @@ int main( int argc, char ** argv )
     else
         fail += 1;
 
-    cout << "Test Summary:" << endl
-         << "tests: " << tests
-         << "\tpassed: " << pass
-         << "\tfailed: " << fail << endl;
+    /* cout << "Test Summary:" << endl */
+    /*      << "tests: " << tests */
+    /*      << "\tpassed: " << pass */
+    /*      << "\tfailed: " << fail << endl; */
     return 0;
 }
 

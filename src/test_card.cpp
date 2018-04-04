@@ -1,22 +1,22 @@
 /*
- * File: test_card_t.cpp
+ * File: test_card.cpp
  * Created: 04/01/2018
  * Modified: 04/01/2018
  */
 
 #include <iostream>
-#include "card_t.h"
+#include "card.h"
 
 using namespace std;
 
-void test_constructor( card_t card, face_t face, suit_t suit, bool face_up );
+void test_constructor( Card card, face_t face, suit_t suit, bool face_up );
 
 int main( int argc, char ** argv )
 {
-    card_t ace_of_hearts;
-    card_t six_of_spades{ face_t::six, suit_t::spades };
-    card_t queen_of_diamonds{ face_t::queen, suit_t::diamonds, true };
-    card_t card_copy{ queen_of_diamonds };
+    Card ace_of_hearts;
+    Card six_of_spades{ face_t::six, suit_t::spades };
+    Card queen_of_diamonds{ face_t::queen, suit_t::diamonds, true };
+    Card card_copy{ queen_of_diamonds };
 
     // test constructors
     test_constructor( ace_of_hearts, face_t::ace, suit_t::hearts, false );
@@ -40,7 +40,7 @@ int main( int argc, char ** argv )
     return 0;
 }
 
-void test_constructor( card_t card, face_t face, suit_t suit, bool face_up )
+void test_constructor( Card card, face_t face, suit_t suit, bool face_up )
 {
     if( card.get_suit() != suit )
         cout << "Error: unexpected suit" << endl

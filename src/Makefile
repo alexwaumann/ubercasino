@@ -26,13 +26,13 @@ test_hand_t.o: test_hand_t.cpp hand_t.h card_t.h
 hand_t.o: hand_t.cpp hand_t.h card_t.h
 	g++ $(CXXFLAGS) -Wall -c hand_t.cpp
 
-test_card: test_card_t.o card_t.o suit_t.o face_t.o
-	g++ $(CXXFLAGS) -o test_card test_card_t.o card_t.o suit_t.o face_t.o
+test_card: test_card.o card.o suit_t.o face_t.o
+	g++ $(CXXFLAGS) -o test_card test_card.o card.o suit_t.o face_t.o
 	./test_card
-test_card_t.o: test_card_t.cpp card_t.h suit_t.h face_t.h
-	g++ $(CXXFLAGS) -Wall -c test_card_t.cpp
-card_t.o: card_t.cpp card_t.h suit_t.h face_t.h
-	g++ $(CXXFLAGS) -Wall -c card_t.cpp
+test_card.o: test_card.cpp card.h suit_t.h face_t.h
+	g++ $(CXXFLAGS) -Wall -c test_card.cpp
+card.o: card.cpp card.h suit_t.h face_t.h
+	g++ $(CXXFLAGS) -Wall -c card.cpp
 
 test_suit: test_suit_t.o suit_t.o
 	g++ $(CXXFLAGS) -o test_suit test_suit_t.o suit_t.o

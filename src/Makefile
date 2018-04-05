@@ -55,4 +55,4 @@ rank_t.o: rank_t.cpp rank_t.h
 	g++ $(CXXFLAGS) -c rank_t.cpp
 
 clean:
-	rm -rf *.o test_face test_suit test_card test_hand test_player
+	rm -rf *.o test_rank test_suit test_card test_hand test_player

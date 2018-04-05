@@ -9,7 +9,7 @@
 
 CXXFLAGS += --std=c++11
 
-test: test_rank test_suit test_card
+test: test_rank test_suit test_card test_hand
 
 test_player: test_player.o player.o hand_t.o card_t.o
 	g++ $(CXXFLAGS) -o test_player test_player.o player.o hand_t.o card_t.o
@@ -22,12 +22,12 @@ player.o: player.cpp player.h hand_t.h card_t.h
 shoe.o: shoe.cpp shoe.h shoe_t.h card.h suit_t.h rank_t.h
 	g++ $(CXXFLAGS) -c shoe.cpp
 
-test_hand: test_hand.o hand.o card.o
-	g++ $(CXXFLAGS) -o test_hand test_hand.o hand.o card.o
+test_hand: test_hand.o hand.o card.o suit_t.o rank_t.o
+	g++ $(CXXFLAGS) -o test_hand test_hand.o hand.o card.o suit_t.o rank_t.o
 	./test_hand
-test_hand.o: test_hand.cpp hand.h card.h
-	g++ $(CXXFLAGS) -Wall -c test_hand_t.cpp
-hand.o: hand.cpp hand.h card.h
+test_hand.o: test_hand.cpp hand.h card.h suit_t.h rank_t.h
+	g++ $(CXXFLAGS) -Wall -c test_hand.cpp
+hand.o: hand.cpp hand.h card.h suit_t.h rank_t.h
 	g++ $(CXXFLAGS) -Wall -c hand.cpp
 
 test_card: test_card.o card.o suit_t.o rank_t.o

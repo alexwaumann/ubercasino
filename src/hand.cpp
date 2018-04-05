@@ -51,6 +51,11 @@ bool Hand::is_bust() const
     return false;
 } 
 
+// TODO
+bool Hand::is_splittable() const
+{
+}
+
 /*
  * Function: add_card
  *
@@ -64,3 +69,9 @@ void Hand::add_card( Card card )
     this->cards.push_back( card );
     this->points = this->points + card.get_rank();
 }
+
+// TODO
+Hand Hand::split()
+{
+}
+

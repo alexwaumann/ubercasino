@@ -19,8 +19,10 @@ class Hand
         int get_points() const;
         bool is_soft() const;
         bool is_bust() const;
+        bool is_splittable() const;
 
         void add_card( Card card );
+        Hand split();
 
     private:
         std::vector<Card> cards;

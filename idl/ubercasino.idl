@@ -1,0 +1,89 @@
+module ubercasino {
+
+// This IDL file defines the interface between the
+// Player, the Dealer, and the PitBoss.
+
+// Below will probably be set in DDSEntityManager.cpp
+// ----------------------
+// QOS Settings:
+
+//     reliability.kind = RELIABLE_RELIABILITY_QOS;
+//     durability.kind = TRANSIENT_DURABILITY_QOS;
+
+// Partition Name
+//    ""
+
+// Topic Names
+//    "player"
+//    "game"
+//    "dealer"
+// -----------------------
+
+
+// Constants:
+//    (real(!),unchangeable)
+    const long SIZE_OF_UUID = 16;
+
+//    (should be directly traceable to requirements)
+   const long MAX_PLAYERS_IN_A_GAME = 7;
+   const long MAX_CARDS_PER_PLAYER = 10;
+
+   enum suite_t {hearts,diamonds,clubs,spades};
+   enum card_kind {ace,two,three,four,five,six,seven,eight,nine,ten,jack,queen,king};
+
+   struct card_t
+   {
+      card_kind card;
+      suite_t suite;
+      boolean valid;      // the card is valid and in the game      
+   };
+
+// State
+
+    enum player_action_t { idle, hitting, standing, splitting, doubling };
+
+    struct Player
+    {
+       long count;
+       char uid[SIZE_OF_UUID];      // A unique ID for a player
+       char game_uid[SIZE_OF_UUID];  // The game the player is in
+       char name[32];                // The players human name
+       float balance;                // The funds currently belonging 
+                                     // to the player
+       player_action_t A;            // The action the player is taking
+    };
+#pragma keylist Player
+
+   enum game_state  { waiting_to_join, waiting, playing };
+   // note when in 'playing', the dealer is waiting for a player
+   // to do something
+
+   struct Dealer
+   {
+       char uid[SIZE_OF_UUID];    // A unique ID for a Dealer
+       char name[32];
+       char game_uid[SIZE_OF_UUID];  // the game currently being played
+   };
+#pragma keylist Dealer
+
+   struct PlayerState
+   {
+       char uid[SIZE_OF_UUID];  // player id
+       card_t cards[MAX_CARDS_PER_PLAYER];
+   };
+
+   // Game is published by the dealer.  It is the state of the
+   // entire game at any point in time
+   struct Game
+   {
+       game_state gstate;
+       char game_uid[SIZE_OF_UUID];  // the game currently being played
+       char dealer_uid[SIZE_OF_UUID];
+       PlayerState p[MAX_PLAYERS_IN_A_GAME];
+       card_t dealer_cards[MAX_CARDS_PER_PLAYER]; // 0'th element is 'hole card'
+       long active_player; // active when gstate == 'playing', this is the
+                           // index of the player that is active
+   };
+#pragma keylist Game
+
+};

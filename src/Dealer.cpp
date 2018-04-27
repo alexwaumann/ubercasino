@@ -9,7 +9,6 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
-#include "DDSEntityManager.h"
 #include "ccpp_ubercasino.h"
 #include "dealer.h"
 #include "io.h"
@@ -34,6 +33,10 @@ int main( int argc, char ** argv )
     std::cout
         << "Enter 'start' to begin an infinite shoe game" << std::endl
         << "Enter 'q' to exit" << std::endl;
+
+    dealer_pub dp = dealer_pub();
+    game_pub gp = game_pub();
+    player_sub ps = player_sub( &d );
 
     char user_input[100];
     while( std::cin.getline( user_input, sizeof( user_input ) ) )

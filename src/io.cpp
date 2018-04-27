@@ -10,7 +10,7 @@ read_listener::read_listener( dealer * dealer_ptr )
 
 void read_listener::on_data_available( DDS::DataReader_ptr reader )
 {
-    DDS::ReturnCode_t status;
+    ReturnCode_t status;
     PlayerSeq msgList;
 
     SampleInfoSeq infoSeq;
@@ -44,8 +44,8 @@ dealer_pub::dealer_pub()
     mgr.registerType( mt.in() );
 
     // create Topic
-    char topic_name[] = "dealer";
-    mgr.createTopic( topic_name );
+    std::cout << "Creating dealer topic" << std::endl;
+    mgr.createTopic( (char *) "dealer" );
     
     // create Publisher
     mgr.createPublisher();
@@ -58,7 +58,7 @@ dealer_pub::dealer_pub()
     DealerWriter = DealerDataWriter::_narrow(dwriter.in());
 }
 
-void dealer_pub::publish( ubercasino::Dealer data )
+void dealer_pub::publish( Dealer data )
 {
     ReturnCode_t status = DealerWriter->write( data, DDS::HANDLE_NIL );
     checkStatus( status, "DealerDataWriter::write" );
@@ -67,7 +67,6 @@ void dealer_pub::publish( ubercasino::Dealer data )
 // game_pub
 game_pub::game_pub()
 {
-    DDSEntityManager mgr;
 
     // create domain participant
     char partition_name[] = "";
@@ -78,8 +77,8 @@ game_pub::game_pub()
     mgr.registerType( mt.in() );
 
     // create Topic
-    char topic_name[] = "game";
-    mgr.createTopic( topic_name );
+    std::cout << "Creating game topic" << std::endl;
+    mgr.createTopic( (char *) "game" );
     
     // create Publisher
     mgr.createPublisher();
@@ -92,7 +91,7 @@ game_pub::game_pub()
     GameWriter = GameDataWriter::_narrow(dwriter.in());
 }
 
-void game_pub::publish( ubercasino::Game data )
+void game_pub::publish( Game data )
 {
     ReturnCode_t status = GameWriter->write( data, DDS::HANDLE_NIL );
     checkStatus( status, "GameDataWriter::write" );
@@ -101,7 +100,6 @@ void game_pub::publish( ubercasino::Game data )
 // player_sub
 player_sub::player_sub( dealer * dealer_ptr )
 {
-    DDSEntityManager mgr;
 
     // create domain participant
     char partition_name[] = "";
@@ -112,8 +110,8 @@ player_sub::player_sub( dealer * dealer_ptr )
     mgr.registerType( mt.in() );
 
     // create Topic
-    char topic_name[] = "player";
-    mgr.createTopic( topic_name );
+    std::cout << "Creating player topic" << std::endl;
+    mgr.createTopic( (char *) "player" );
     
     //create Subscriber
     mgr.createSubscriber();

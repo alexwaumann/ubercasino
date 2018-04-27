@@ -13,7 +13,7 @@ dealer::dealer()
 
 dealer::~dealer() { }
 
-void dealer::callback( ubercasino::Player data )
+void dealer::callback( UberCasino::Player data )
 {
     std::cout << "Player payload received" << std::endl;
 }

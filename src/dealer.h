@@ -17,9 +17,9 @@ class dealer
     public:
         dealer();
         ~dealer();
-        ubercasino::Dealer dealer_struct;
-        ubercasino::Game game_struct;
-        void callback( ubercasino::Player data );
+        UberCasino::Dealer dealer_struct;
+        UberCasino::Game game_struct;
+        void callback( UberCasino::Player data );
 
         void timer_expired();
     private:

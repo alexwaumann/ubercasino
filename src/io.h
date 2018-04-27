@@ -6,7 +6,7 @@
 #include "dealer.h"
 
 using namespace DDS;
-using namespace ubercasino;
+using namespace UberCasino;
 
 class read_listener: public virtual DDS::DataReaderListener
 {
@@ -56,7 +56,7 @@ class dealer_pub
 {
     public:
         dealer_pub();
-        void publish( ubercasino::Dealer data );
+        void publish( Dealer data );
     private:
         DDSEntityManager mgr;
         DealerTypeSupport_var mt;
@@ -68,7 +68,7 @@ class game_pub
 {
     public:
         game_pub();
-        void publish( ubercasino::Game data );
+        void publish( Game data );
     private:
         DDSEntityManager mgr;
         GameTypeSupport_var mt;

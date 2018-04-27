@@ -1,4 +1,4 @@
-module ubercasino {
+module UberCasino {
 
 // This IDL file defines the interface between the
 // Player, the Dealer, and the PitBoss.
@@ -54,7 +54,7 @@ module ubercasino {
     };
 #pragma keylist Player
 
-   enum game_state  { waiting_to_join, waiting, playing };
+   enum game_state  { waiting_to_join, waiting, playing, end_hand };
    // note when in 'playing', the dealer is waiting for a player
    // to do something
 

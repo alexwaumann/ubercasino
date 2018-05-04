@@ -17,9 +17,23 @@ Card::Card( suite_t suit, card_kind rank, bool valid )
     m_card.valid = valid;
 }
 
-suite_t Card::suit() { return m_card.suite; }
+suite_t Card::suit() const { return m_card.suite; }
 
-card_kind Card::rank() { return m_card.card; }
+card_kind Card::rank() const { return m_card.card; }
 
-bool Card::valid() { return m_card.valid; }
+bool Card::valid() const { return m_card.valid; }
+
+/*
+ * Function: ace
+ *
+ * @returns: true: card is ace
+ *           false: otherwise
+ */
+bool Card::ace() const
+{
+    if( m_card.card == card_kind::ace )
+        return true;
+    else
+        return false;
+}
 

@@ -9,11 +9,11 @@
 
 using namespace UberCasino;
 
-class card
+class Card
 {
     public:
-        card( suite_t suit, card_kind rank );
-        card( suite_t suit, card_kind rank, bool valid );
+        Card( suite_t suit, card_kind rank );
+        Card( suite_t suit, card_kind rank, bool valid );
 
         suite_t suit();
         card_kind rank();

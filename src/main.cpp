@@ -10,13 +10,23 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "ccpp_ubercasino.h"
-#include "dealer.h"
-#include "io.h"
+
+#include "card.h"
+
+using namespace UberCasino;
 
 int main( int argc, char ** argv )
 {
 
+    card somecard( suite_t::spades, card_kind::king, true );
+
+    std::cout << "suit: " << somecard.suit() << std::endl
+              << "rank: " << somecard.rank() << std::endl
+              << "valid: " << somecard.valid() << std::endl;
+
+    /*
     dealer d = dealer();
+    PTR = &d;
     boost::uuids::uuid uid = boost::uuids::random_generator()();
     memcpy( d.dealer_struct.uid, &uid, sizeof( d.dealer_struct.uid ) );
     strncpy( d.dealer_struct.name, "Alejandro", sizeof( d.dealer_struct.name ) );
@@ -36,7 +46,7 @@ int main( int argc, char ** argv )
 
     dealer_pub dp = dealer_pub();
     game_pub gp = game_pub();
-    player_sub ps = player_sub( &d );
+    player_sub ps = player_sub();
 
     char user_input[100];
     while( std::cin.getline( user_input, sizeof( user_input ) ) )
@@ -45,8 +55,9 @@ int main( int argc, char ** argv )
             break;
 
         // fltk callbacks will call this function with a string
-        //d.user_input( std::string( user_input ) );
+        d.user_input( std::string( user_input ) );
     }
+    */
 
     return 0;
 }

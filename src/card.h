@@ -20,9 +20,11 @@ class Card
         card_kind rank() const;
         bool valid() const;
         bool ace() const;
+        int value() const;
 
     private:
         card_t m_card; // uses card type from UberCasino namespace
+        int m_value;
 };
 
 #endif

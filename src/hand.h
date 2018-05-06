@@ -1,32 +1,32 @@
 /*
  * File: hand.h
- * Created: 04/01/2018
- * Modified: 04/05/2018
  */
 
-#ifndef __HAND_H__
-#define __HAND_H__
+#ifndef HAND_H
+#define HAND_H
 
 #include "card.h"
-#include <vector>
+
+#define MAX_CARDS_PER_PLAYER 10
 
 class Hand
 {
     public:
         Hand();
 
-        std::vector<Card> get_cards() const;
-        int get_points() const;
-        bool is_soft() const;
-        bool is_bust() const;
-        bool is_splittable() const;
+        int size() const;
+        Card * cards();
+        int points() const;
+        bool blackjack() const;
+        bool twenty_one() const;
+        bool bust() const;
 
-        void add_card( Card card );
-        Hand split();
+        bool add_card( Card card );
 
     private:
-        std::vector<Card> cards;
-        int points;
+        int m_size;
+        int m_points;
+        Card m_cards[MAX_CARDS_PER_PLAYER];
 };
 
 #endif

@@ -1,24 +1,25 @@
 /*
  * File: hand.cpp
- * Created: 04/01/2018
- * Modified: 04/05/2018
  */
 
 #include "hand.h"
 
 Hand::Hand()
 {
-    this->points = 0;
+    m_size = 0;
+    m_points = 0;
 }
 
-std::vector<Card> Hand::get_cards() const { return this->cards; }
+int Hand::size() const { return m_size; }
 
-int Hand::get_points() const
+Card * Hand::cards() { return m_cards; }
+
+int Hand::points() const
 {
-    int points = this->points;
-    int n = this->cards.size();
+    int points = m_points;
+    int n = m_size;
     for( int i = 0; i < n; ++i )
-        if( cards[i].is_ace() )
+        if( m_cards[i].ace() )
             if( (points + 10) <= 21 )
                 points += 10;
 
@@ -26,52 +27,76 @@ int Hand::get_points() const
 }
 
 /*
- * Function: is_soft
+ * Function: blackjack
  *
- * Checks if there's an ace in hand.
+ * Determines if the hand is a blackjack. Hand must have an
+ * "ace" and a card of rank 10 (2 cards total) to be considered
+ * a blackjack.
  *
- * returns: true if there is an ace
- *          false otherwise
+ * @returns: true if hand is blackjack
+ *           false otherwise
  */
-bool Hand::is_soft() const 
+bool Hand::blackjack() const
 {
-    int n = this->cards.size();
-    for( int i = 0; i < n; ++i )
-        if( cards[i].is_ace() )
-            return true;
+    if( m_size == 2 && m_points == 11 )
+        return true;
 
     return false;
 }
 
-bool Hand::is_bust() const
+/*
+ * Function: twenty_one
+ *
+ * Determines if a hand point count is 21.
+ *
+ * @returns true if point count is 21
+ *          false otherwise
+ */
+bool Hand::twenty_one() const
 {
-    if( this->get_points() > 21 )
+    if( points() == 21 )
+        return true;
+
+    return false;
+}
+
+/*
+ * Function: bust
+ *
+ * Determines if a hand is a bust.
+ *
+ * @ returns: true if hand busts
+ *            false otherwise
+ */
+bool Hand::bust() const
+{
+    if( points() > 21 )
         return true;
 
     return false;
 } 
-
-// TODO
-bool Hand::is_splittable() const
-{
-}
 
 /*
  * Function: add_card
  *
  * Adds a card to the hand and updates the hand point count.
  * Note: "ace" is always treated as 1 point here.
+ * Note: rank is 0 indexed so we have to add an offset of 1.
  *
  * @param card: card to be added to hand
+ *
+ * @returns true if successful
+ *          false otherwise
  */
-void Hand::add_card( Card card )
+bool Hand::add_card( Card card )
 {
-    this->cards.push_back( card );
-    this->points = this->points + card.get_rank();
-}
+    if( m_size < MAX_CARDS_PER_PLAYER )
+    {
+        m_cards[m_size++] = card;
+        m_points += card.rank() + 1;
+        return true;
+    }
 
-// TODO
-Hand Hand::split()
-{
+    return false;
 }
 

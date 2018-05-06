@@ -4,6 +4,13 @@
 
 #include "card.h"
 
+Card::Card()
+{
+    m_card.card = card_kind::ace;
+    m_card.suite = suite_t::hearts;
+    m_card.valid = false;
+}
+
 Card::Card( suite_t suit, card_kind rank )
 {
     m_card.card = rank;

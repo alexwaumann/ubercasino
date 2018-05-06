@@ -12,6 +12,7 @@ using namespace UberCasino;
 class Card
 {
     public:
+        Card();
         Card( suite_t suit, card_kind rank );
         Card( suite_t suit, card_kind rank, bool valid );
 

@@ -28,8 +28,17 @@ ${IDL_GENERATED}: idl/ubercasino.idl
 #DEALER_FILES = src/dealer.cpp src/io.cpp src/DDSEntityManager.cpp src/CheckStatus.cpp
 #DEALER_H_FILES = src/dealer.h src/io.h src/DDSEntityManager.h src/CheckStatus.h src/callback.h
 
-DEALER_FILES = src/card.cpp src/DDSEntityManager.cpp src/CheckStatus.cpp
-DEALER_H_FILES = src/card.h src/DDSEntityManager.h src/CheckStatus.h
+DEALER_FILES =\
+			  src/card.cpp \
+			  src/hand.cpp \
+			  src/DDSEntityManager.cpp \
+			  src/CheckStatus.cpp
+
+DEALER_H_FILES =\
+				src/card.h \
+				src/hand.h \
+				src/DDSEntityManager.h \
+				src/CheckStatus.h
 
 main: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/main.cpp ${DEALER_FILES} ${DEALER_H_FILES}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}

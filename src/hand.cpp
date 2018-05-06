@@ -81,7 +81,6 @@ bool Hand::bust() const
  *
  * Adds a card to the hand and updates the hand point count.
  * Note: "ace" is always treated as 1 point here.
- * Note: rank is 0 indexed so we have to add an offset of 1.
  *
  * @param card: card to be added to hand
  *
@@ -93,7 +92,7 @@ bool Hand::add_card( Card card )
     if( m_size < MAX_CARDS_PER_PLAYER )
     {
         m_cards[m_size++] = card;
-        m_points += card.rank() + 1;
+        m_points += card.value();
         return true;
     }
 

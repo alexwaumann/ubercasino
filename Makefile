@@ -25,20 +25,23 @@ IDL_GENERATED=${IDL_GENERATED_H} ${IDL_GENERATED_CPP}
 ${IDL_GENERATED}: idl/ubercasino.idl
 	${OSPL_HOME}/bin/idlpp -l cpp -d gen idl/ubercasino.idl
 
-#DEALER_FILES = src/dealer.cpp src/io.cpp src/DDSEntityManager.cpp src/CheckStatus.cpp
-#DEALER_H_FILES = src/dealer.h src/io.h src/DDSEntityManager.h src/CheckStatus.h src/callback.h
-
 DEALER_FILES =\
 			  src/card.cpp \
 			  src/hand.cpp \
-			  src/DDSEntityManager.cpp \
-			  src/CheckStatus.cpp
+			  src/shoe.cpp \
+			  src/dealer.cpp \
+			  src/io.cpp \
+			  src/dds_entity_manager.cpp \
+			  src/check_status.cpp
 
 DEALER_H_FILES =\
 				src/card.h \
 				src/hand.h \
-				src/DDSEntityManager.h \
-				src/CheckStatus.h
+				src/shoe.h \
+				src/dealer.h \
+				src/io.h \
+				src/dds_entity_manager.h \
+				src/check_status.h
 
 main: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/main.cpp ${DEALER_FILES} ${DEALER_H_FILES}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}

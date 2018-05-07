@@ -4,7 +4,7 @@
  * This file is from an OpenSplice exmaple.
  */
 
-#include "DDSEntityManager.h"
+#include "dds_entity_manager.h"
 
 
 void DDSEntityManager::createParticipant(const char *partitiontName)

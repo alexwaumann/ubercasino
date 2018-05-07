@@ -9,7 +9,7 @@
 
 
   #include "ccpp_dds_dcps.h"
-  #include "CheckStatus.h"
+  #include "check_status.h"
   using namespace DDS;
 
   class DDSEntityManager

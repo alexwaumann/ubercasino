@@ -29,7 +29,7 @@
  * 
  ***/
 
-#include "CheckStatus.h"
+#include "check_status.h"
 
 /* Array to hold the names for all ReturnCodes. */
 string RetCodeName[13] = 

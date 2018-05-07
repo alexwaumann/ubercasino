@@ -1,11 +1,9 @@
 /*
  * File: rank_t.h
- * Created: 04/02/2018
- * Modified: 04/03/2018
  */
 
-#ifndef __RANK_T_H__
-#define __RANK_T_H__
+#ifndef RANK_T_H
+#define RANK_T_H
 
 #include <string>
 #include <iostream>

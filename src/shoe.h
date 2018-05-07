@@ -5,23 +5,20 @@
 #ifndef SHOE_H
 #define SHOE_H
 
+#include "shoe_t.h"
 #include "card.h"
-
-enum shoe_t
-{
-    test,
-    eight,
-    infinite
-};
 
 class Shoe
 {
     public:
         Shoe();
-        Shoe( shoe_t type, int test_case );
+        Shoe( int test_case );
 
         shoe_t type() const;
         int test_case() const;
+
+        void type( shoe_t type );
+        void test_case( int test_case );
 
         Card draw_card();
         void shuffle();

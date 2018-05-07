@@ -4,8 +4,8 @@
  * Modified: 04/02/2018
  */
 
-#ifndef __SUIT_T__
-#define __SUIT_T__
+#ifndef SUIT_T
+#define SUIT_T
 
 #include <iostream>
 

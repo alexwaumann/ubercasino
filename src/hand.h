@@ -6,8 +6,7 @@
 #define HAND_H
 
 #include "card.h"
-
-#define MAX_CARDS_PER_PLAYER 10
+#include "interface.h"
 
 class Hand
 {
@@ -15,13 +14,13 @@ class Hand
         Hand();
 
         int size() const;
-        Card * cards();
+        Card card( int index ) const;
         int points() const;
         bool blackjack() const;
-        bool twenty_one() const;
         bool bust() const;
 
         bool add_card( Card card );
+        void reset();
 
     private:
         int m_size;

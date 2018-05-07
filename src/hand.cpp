@@ -12,8 +12,22 @@ Hand::Hand()
 
 int Hand::size() const { return m_size; }
 
-Card * Hand::cards() { return m_cards; }
+Card Hand::card( int index ) const
+{
+    if( index < m_size )
+        return m_cards[index];
 
+    // TODO: create invalid card
+    return Card( suit_t::hearts, rank_t::two );
+}
+
+/*
+ * Function: points
+ *
+ * Gets the highest possible point count for the hand.
+ *
+ * @returns: hand point count
+ */
 int Hand::points() const
 {
     int points = m_points;
@@ -39,22 +53,6 @@ int Hand::points() const
 bool Hand::blackjack() const
 {
     if( m_size == 2 && m_points == 11 )
-        return true;
-
-    return false;
-}
-
-/*
- * Function: twenty_one
- *
- * Determines if a hand point count is 21.
- *
- * @returns true if point count is 21
- *          false otherwise
- */
-bool Hand::twenty_one() const
-{
-    if( points() == 21 )
         return true;
 
     return false;
@@ -92,10 +90,21 @@ bool Hand::add_card( Card card )
     if( m_size < MAX_CARDS_PER_PLAYER )
     {
         m_cards[m_size++] = card;
-        m_points += card.value();
+        m_points = m_points + card.rank();
         return true;
     }
 
     return false;
+}
+
+/*
+ * Function: reset
+ *
+ * Resets the hand.
+ */
+void Hand::reset()
+{
+    m_size = 0;
+    m_points = 0;
 }
 

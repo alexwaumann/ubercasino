@@ -5,25 +5,22 @@
 #ifndef CARD_H
 #define CARD_H
 
-#include "ccpp_ubercasino.h"
-
-using namespace UberCasino;
+#include "rank_t.h"
+#include "suit_t.h"
 
 class Card
 {
     public:
         Card();
-        Card( suite_t suit, card_kind rank );
-        Card( suite_t suit, card_kind rank, bool valid );
+        Card( suit_t suit, rank_t rank );
 
-        suite_t suit() const;
-        card_kind rank() const;
-        bool valid() const;
+        suit_t suit() const;
+        rank_t rank() const;
         bool ace() const;
-        int value() const;
 
     private:
-        card_t m_card; // uses card type from UberCasino namespace
+        suit_t m_suit;
+        rank_t m_rank;
         int m_value;
 };
 
